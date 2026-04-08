@@ -1,1 +1,62 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donation Tracker | NGO Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Donation Tracker</h1>
+        <p class="subtitle">For NGOs & Mission-Driven Organizations</p>
+        
+        <!-- Donation Form -->
+        <div class="form-card">
+            <h2>➕ Record New Donation</h2>
+            <input type="text" id="donorName" placeholder="Donor Name">
+            <input type="number" id="donationAmount" placeholder="Amount ($)">
+            <input type="date" id="donationDate">
+            <select id="donationCategory">
+                <option value="Individual">Individual</option>
+                <option value="Corporate">Corporate</option>
+                <option value="Foundation">Foundation</option>
+                <option value="Event">Event</option>
+            </select>
+            <button onclick="addDonation()">Record Donation</button>
+        </div>
+        
+        <!-- Stats Dashboard -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>💰 Total Raised</h3>
+                <p id="totalRaised">$0</p>
+            </div>
+            <div class="stat-card">
+                <h3>👥 Total Donors</h3>
+                <p id="totalDonors">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>⭐ Average Donation</h3>
+                <p id="avgDonation">$0</p>
+            </div>
+        </div>
+        
+        <!-- Chart -->
+        <div class="chart-container">
+            <canvas id="donationChart"></canvas>
+        </div>
+        
+        <!-- Donation List -->
+        <div class="donation-list">
+            <h2>📋 Recent Donations</h2>
+            <div id="donationTable"></div>
+        </div>
+        
+        <!-- Export Button -->
+        <button onclick="exportToCSV()" class="export-btn">📎 Export to CSV (for Excel)</button>
+        <button onclick="clearAllData()" class="clear-btn">🗑️ Clear All Data</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
