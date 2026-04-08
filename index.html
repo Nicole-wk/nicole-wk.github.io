@@ -296,6 +296,11 @@
       font-weight: 300;
       line-height: 1.7;
     }
+    .sample-card .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
     .sample-card .btn {
       display: inline-block;
       background: var(--navy);
@@ -310,11 +315,49 @@
       align-self: flex-start;
     }
     .sample-card .btn:hover { background: var(--terracotta); }
+    .sample-card .btn-outline {
+      background: transparent;
+      border: 1px solid var(--navy);
+      color: var(--navy);
+    }
+    .sample-card .btn-outline:hover {
+      background: var(--navy);
+      color: #fff;
+    }
     .sample-card .btn.soon {
       background: var(--soft-border);
       color: var(--muted);
       cursor: default;
       pointer-events: none;
+    }
+    
+    /* Image preview modal */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      cursor: pointer;
+    }
+    .image-modal img {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+      margin-top: 5%;
+    }
+    .image-modal .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
     /* TIMELINE */
@@ -462,6 +505,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#samples">Work</a></li>
+    <li><a href="#interactive">Tools</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -588,7 +632,7 @@
   </div>
 </section>
 
-<!-- WORK SAMPLES -->
+<!-- WORK SAMPLES (Original) -->
 <section id="samples">
   <div class="section-label">Evidence of work</div>
   <div class="section-title">Work <span>Samples</span></div>
@@ -645,6 +689,63 @@
 
   </div>
 </section>
+
+<!-- INTERACTIVE TOOLS SECTION (NEW) -->
+<section id="interactive">
+  <div class="section-label">Build & Deploy</div>
+  <div class="section-title">Interactive <span>Tools & Dashboards</span></div>
+  <div class="samples-grid">
+    
+    <!-- Donation Tracker -->
+    <div class="sample-card">
+      <div class="category">NGO & Fundraising</div>
+      <h3>Donation Tracker with Analytics</h3>
+      <p>Track donations, visualize trends, and export reports. Built for NGOs to monitor fundraising performance and donor engagement.</p>
+      <div class="btn-group">
+        <a href="https://nicole-wk.github.io/donation-tracker" target="_blank" class="btn">Live Demo →</a>
+      </div>
+    </div>
+
+    <!-- Meeting Scheduler -->
+    <div class="sample-card">
+      <div class="category">Operations & Admin</div>
+      <h3>Meeting Scheduler + Admin Dashboard</h3>
+      <p>Automated booking system with real-time availability, email confirmations, and admin metrics. Reduces coordination time by 75%.</p>
+      <div class="btn-group">
+        <a href="https://nicole-wk.github.io/meeting-scheduler" target="_blank" class="btn">Live Demo →</a>
+      </div>
+    </div>
+
+    <!-- CSV Cleaner -->
+    <div class="sample-card">
+      <div class="category">Data Analysis & AI Prep</div>
+      <h3>CSV Cleaner & Report Generator</h3>
+      <p>Upload messy data → automatic cleaning (empty rows, duplicates, date formatting) → download clean CSV + quality report.</p>
+      <div class="btn-group">
+        <a href="https://nicole-wk.github.io/csv-cleaner" target="_blank" class="btn">Live Demo →</a>
+      </div>
+    </div>
+
+    <!-- Power BI Dashboard - 2 pages -->
+    <div class="sample-card">
+      <div class="category">Business Intelligence</div>
+      <h3>Logistics & Operations Dashboard</h3>
+      <p>Interactive Power BI dashboard tracking KPIs: delivery performance, inventory turnover, cost metrics, and operational efficiency.</p>
+      <div class="btn-group">
+        <a href="#" onclick="openModal('Logistics and Operations Performance_page-0001.jpg'); return false;" class="btn btn-outline">View Page 1</a>
+        <a href="#" onclick="openModal('Logistics and Operations Performance_page-0002.jpg'); return false;" class="btn btn-outline">View Page 2</a>
+        <a href="Logistics and Operations Performance.pdf" target="_blank" class="btn">Download PDF</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Image Modal for Power BI -->
+<div id="imageModal" class="image-modal" onclick="closeModal()">
+  <span class="close-modal">&times;</span>
+  <img id="modalImage" src="">
+</div>
 
 <!-- EXPERIENCE -->
 <section id="experience">
@@ -748,6 +849,27 @@
 </div>
 
 <footer>© 2026 Nicole Kamau &nbsp;·&nbsp; Built with intention.</footer>
+
+<script>
+  // Image modal for Power BI dashboard
+  function openModal(imageSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    modal.style.display = "block";
+    modalImg.src = imageSrc;
+  }
+  
+  function closeModal() {
+    document.getElementById('imageModal').style.display = "none";
+  }
+  
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+</script>
 
 </body>
 </html>
