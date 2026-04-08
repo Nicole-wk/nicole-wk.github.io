@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSV Cleaner & Report Generator | Data Prep Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 CSV Cleaner & Report Generator</h1>
+        <p class="subtitle">For Data Analysts & AI Prep</p>
+        
+        <!-- Upload Section -->
+        <div class="upload-card">
+            <h2>📂 Step 1: Upload Your CSV</h2>
+            <input type="file" id="csvFile" accept=".csv">
+            <button onclick="loadCSV()">Load & Clean</button>
+        </div>
+        
+        <!-- Cleaning Options -->
+        <div class="options-card" id="optionsCard" style="display:none;">
+            <h2>⚙️ Step 2: Cleaning Options</h2>
+            <label><input type="checkbox" id="removeEmptyRows" checked> Remove empty rows</label>
+            <label><input type="checkbox" id="trimSpaces" checked> Remove extra spaces</label>
+            <label><input type="checkbox" id="fixDates" checked> Try to fix date formats</label>
+            <label><input type="checkbox" id="removeDuplicates" checked> Remove duplicate rows</label>
+            <button onclick="cleanData()">Apply Cleaning</button>
+        </div>
+        
+        <!-- Report -->
+        <div class="report-card" id="reportCard" style="display:none;">
+            <h2>📊 Step 3: Data Quality Report</h2>
+            <div id="reportContent"></div>
+            <button onclick="downloadCleanedCSV()" class="download-btn">⬇️ Download Cleaned CSV</button>
+            <button onclick="downloadReport()" class="report-btn">📄 Download Report (TXT)</button>
+        </div>
+        
+        <!-- Preview -->
+        <div class="preview-card" id="previewCard" style="display:none;">
+            <h2>👁️ Preview (First 10 rows)</h2>
+            <div id="preview"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
